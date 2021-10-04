@@ -18,7 +18,7 @@ class PopUpGrid(private val faq_list : List<GridItem>) : RecyclerView.Adapter<Po
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var currentItem = faq_list[position]
         holder.title.setText(currentItem.title)
-        //holder.desc.setText(currentItem.desc)
+        holder.desc.setText(currentItem.desc)
     }
 
     override fun getItemCount() = faq_list.size

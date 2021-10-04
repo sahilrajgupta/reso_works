@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         val gridList = generateGridList()
         popup.adapter = PopUpGrid(gridList)
-        popup.layoutManager = GridLayoutManager(this, 2,GridLayoutManager.HORIZONTAL,false)
+        popup.layoutManager = GridLayoutManager(this, 1,GridLayoutManager.HORIZONTAL,false)
         popup.setHasFixedSize(true)
     }
 
