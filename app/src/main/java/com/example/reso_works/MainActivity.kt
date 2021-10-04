@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        open.setOnClickListener{
+        popup.setOnClickListener{
             val mDialogView = LayoutInflater.from(this).inflate(R.layout.popup_window,null);
 
             val mBuilder = AlertDialog.Builder(this)
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         val gridList = generateGridList()
         popup.adapter = PopUpGrid(gridList)
-        popup.layoutManager = GridLayoutManager(this, 5,GridLayoutManager.VERTICAL,false)
+        popup.layoutManager = GridLayoutManager(this, 2,GridLayoutManager.HORIZONTAL,false)
         popup.setHasFixedSize(true)
     }
 
@@ -69,10 +69,45 @@ class MainActivity : AppCompatActivity() {
     }
     private fun generateGridList():List<GridItem>{
         val list = ArrayList<GridItem>()
-        for(i in 0 until 10){
-            val item = GridItem("Item Title $i","Item Descrpition $i")
-            list +=item
-        }
+
+            val item1 = GridItem(" Register your dispute","Register your case at our platform to find a non-confrontational solution to your dispute.\n" +
+                    "\n" +
+                    "1 If you want to take advice from a facilitator (Experience DRP ) who will facilitate you to decide further course of action regarding your dispute.\n" +
+                    "2 You can choose Facilitator out of experienced DRP listed on portal depending requirement of your case and location etc.\n" +
+                    "3 On advice of facilitator (DRP) or without help of facilitator you can further decide to go for Arbitration/Mediations.")
+            list +=item1
+
+            val item2 = GridItem("Choose Arbitrator / Mediator","Choose from our arbitrator/ Mediator for your dispute as per the availability in your desired location.")
+
+            list +=item2
+
+            val item3 = GridItem("Invite the 2nd Party","In the next step, a formal arbitration letter will be sent to the party, inviting them to join in to resolve the dispute in a more flexible and time-efficient way. You may approach the other party to come to the platform in order to make the process complete quickly.")
+
+            list +=item3
+
+            val item4 = GridItem("Agree on Arbitrator/Mediator in your location","1 After both parties give mutual consent to proceed with the process of dispute resolution, they have to now choose an arbitrator depending upon the business involved in the dispute.\n" +
+                    "2 This step culminates when parties pick an arbitrator from our panel. In case, there are differences over selection of the arbitrator a scenario is provided to choose arbitrator/ mediator through an algorithm to select independent DRP , certain other filters are provided in the system, on the basis of their fields of expertise, location, budget, etc.\n" +
+                    "3 Using these filters, both parties would pick some arbitrators/ mediator of their choice independently and then our patented algorithms would decide the arbitrator/ mediator independently for the dispute resolution.")
+
+            list +=item4
+
+            val item5 = GridItem("Finalizing the Arbitrator/Mediator","The algorithms in our technology finalize the best DRP following submission of parties' preferences. Later, the arbitrator is notified about your case. Now, both parties will be asked to pay charges of the arbitration/ mediation.")
+
+            list +=item5
+
+            val item6 = GridItem("Set Your Time of Hearing","Unlike the legal battle in courts, you get quick resolution of disputes on the internet platform. The arbitrator/ mediator , you mutually agreed upon will now set the hearing date.")
+
+            list +=item6
+
+            val item7 = GridItem("Arguments & Evidence","1 Both parties are required to submit documents online to make it easy for the arbitrator/ mediator to understand your case. Documents can also be submitted at the time of the first hearing.\n" +
+                    "2 After you are done with the payment and documentation, the arbitrator/ mediator will now set the venue for the hearing. Both parties should present physically if they belong to the same or neighbouring cities. They may also join the hearings by video conferencing.")
+
+            list +=item7
+
+            val item8 = GridItem("Dispute Resolved","1 Mediator shall try to finalise a mutual settlement agreement between all the parties and the same shall be signed by the concerned parties , in case mutual settlement could not be agreed between the parties , they may decide to go for arbitration or may file a court case. The mediation process may complete with or without meeting between parties depending on complexity of case.\n" +
+                    "2 In case of arbitration, It will be our endeavour that the arbitrator passes fair judgment within one or two hearings. However, there may be several hearings depending on the complexity of the cases. Final Award shall be passed by arbitrator as per provisions of law.")
+
+            list +=item8
         return list
     }
 }
