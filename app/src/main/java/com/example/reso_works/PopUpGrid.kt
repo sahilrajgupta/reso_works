@@ -7,26 +7,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.grid_item.view.*
 
-class GridAdapter (private  val grid_list : List<GridItem>): RecyclerView.Adapter<GridAdapter.GridViewHolder>(){
+class PopUpGrid(private val faq_list : List<GridItem>) : RecyclerView.Adapter<PopUpGrid.ViewHolder>(){
 
-    class GridViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
-        val title : TextView = itemView.title
-        val desc : TextView = itemView.desc
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.grid_item,parent,false)
+        return ViewHolder(itemView)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.popup_grid,parent,false)
-        return GridViewHolder(itemView)
-    }
-
-    override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
-        var currentItem = grid_list[position]
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var currentItem = faq_list[position]
         holder.title.setText(currentItem.title)
         holder.desc.setText(currentItem.desc)
+
     }
 
-    override fun getItemCount(): Int {
-        return grid_list.size
+    override fun getItemCount() = faq_list.size
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val title : TextView = itemView.title
+        val desc : TextView = itemView.desc
     }
 }

@@ -4,14 +4,34 @@ package com.example.reso_works
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.grid_item.*
+import kotlinx.android.synthetic.main.popup_window.*
+import kotlinx.android.synthetic.main.popup_window.view.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        open.setOnClickListener{
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.popup_window,null);
+
+            val mBuilder = AlertDialog.Builder(this)
+                .setView(mDialogView)
+                .setTitle("Description")
+            val mAlertDialog = mBuilder.show()
+
+            mDialogView.close.setOnClickListener{
+                mAlertDialog.dismiss()
+            }
+
+        }
 
         val faqList = generateFaqList()
         recycler_view.adapter = FaqAdapter(faqList)
@@ -19,8 +39,8 @@ class MainActivity : AppCompatActivity() {
         recycler_view.setHasFixedSize(true)
 
         val gridList = generateGridList()
-        popup.adapter = GridAdapter(gridList)
-        popup.layoutManager = GridLayoutManager(this, 2)
+        popup.adapter = PopUpGrid(gridList)
+        popup.layoutManager = GridLayoutManager(this, 5,GridLayoutManager.VERTICAL,false)
         popup.setHasFixedSize(true)
     }
 

@@ -12,14 +12,20 @@
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         tools:listitem="@layout/grid_item"
-        android:layout_below="@+id/recycler_view"
         />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Popup"
+        android:id="@+id/open"
+        android:layout_below="@+id/popup"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:layout_marginTop="10dp"
+        android:layout_below="@+id/open"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
