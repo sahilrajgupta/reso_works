@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.grid_item.*
 import kotlinx.android.synthetic.main.popup_window.*
 import kotlinx.android.synthetic.main.popup_window.view.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PopUpGrid.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,9 +39,11 @@ class MainActivity : AppCompatActivity() {
         recycler_view.setHasFixedSize(true)
 
         val gridList = generateGridList()
-        popup.adapter = PopUpGrid(gridList)
+        popup.adapter = PopUpGrid(gridList,this)
         popup.layoutManager = GridLayoutManager(this, 2,GridLayoutManager.HORIZONTAL,false)
         popup.setHasFixedSize(true)
+
+
     }
 
     private fun generateFaqList():List<FaqItem> {
@@ -109,5 +111,19 @@ class MainActivity : AppCompatActivity() {
 
             list +=item8
         return list
+    }
+
+    override fun onClick(position: Int) {
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.popup_window,null);
+        val list = generateGridList()
+        description.setText(list[position].desc)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("Description")
+        val mAlertDialog = mBuilder.show()
+
+        mDialogView.close.setOnClickListener{
+            mAlertDialog.dismiss()
+        }
     }
 }
