@@ -5,9 +5,12 @@ package com.example.reso_works
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.grid_item.*
 import kotlinx.android.synthetic.main.popup_window.*
@@ -114,16 +117,19 @@ class MainActivity : AppCompatActivity(), PopUpGrid.OnItemClickListener {
     }
 
     override fun onClick(position: Int) {
-        val mDialogView = LayoutInflater.from(this).inflate(R.layout.popup_window,null);
+        /*val mDialogView = LayoutInflater.from(this).inflate(R.layout.popup_window,null);
         val list = generateGridList()
-        description.setText(list[position].desc)
+        //description.setText(list[position].desc)
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
             .setTitle("Description")
+            .setMessage(list[position].desc)
         val mAlertDialog = mBuilder.show()
 
         mDialogView.close.setOnClickListener{
-            mAlertDialog.dismiss()
-        }
+            mAlertDialog.dismiss()*/
+        val list = generateGridList()
+        val bottomSheet = BottomSheet(list,position)
+        bottomSheet.show(supportFragmentManager,"BottomSheet")
     }
 }

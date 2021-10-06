@@ -19,7 +19,7 @@ class PopUpGrid(private val faq_list : List<GridItem>, private val onItemClickLi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var currentItem = faq_list[position]
         holder.title.setText(currentItem.title)
-        holder.desc.setText(currentItem.desc)
+        //holder.desc.setText(currentItem.desc)
     }
 
     override fun getItemCount() = faq_list.size
@@ -33,7 +33,7 @@ class PopUpGrid(private val faq_list : List<GridItem>, private val onItemClickLi
         }
 
         val title : TextView = itemView.title
-        val desc : TextView = itemView1.description
+        //val desc : TextView = itemView1.description
 
     }
     interface OnItemClickListener{
